@@ -1,0 +1,29 @@
+starter % uv run agentcore invoke '{"prompt": "Go to https://www.udacity.com and tell me the page title.", "customer_id": "CUST-123", "session_id": "t6"}'
+
+⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on
+Amazon Bedrock AgentCore.
+   New Bedrock AgentCore features are only accessible in the AgentCore CLI.
+
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
+   To install the AgentCore CLI: npm install -g @aws/agentcore
+   To import existing agents, run: agentcore import
+   Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
+
+╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
+│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
+│ Request ID: 692f2745-7a31-4dc7-a39c-08f4f712598f                                       │
+│ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ GenAI Dashboard:                                                                       │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
+│ gent-core                                                                              │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
+Response:
+The page title of https://www.udacity.com is:
+
+**"Learn the Latest Tech Skills; Advance Your Career | Udacity"**

@@ -1,0 +1,37 @@
+starter % uv run agentcore invoke '{"prompt": "Hi, I am Jane. I prefer concise responses.", "customer_id": "CUST-123", "session_id": "s-A"}'
+
+⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy
+agents on Amazon Bedrock AgentCore.
+   New Bedrock AgentCore features are only accessible in the AgentCore CLI.
+
+   To uninstall this starter toolkit, run: pip uninstall
+bedrock-agentcore-starter-toolkit
+   To install the AgentCore CLI: npm install -g @aws/agentcore
+   To import existing agents, run: agentcore import
+   Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
+
+╭─────────────────────────────────── csai_agent ────────────────────────────────────╮
+│ Session: 399b8d0b-691e-4213-849a-71a6e9da8ed6                                     │
+│ Request ID: d0dd2663-ffed-4487-a113-0057576c229c                                  │
+│ ARN:                                                                              │
+│ arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                      │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                    │
+│ GenAI Dashboard:                                                                  │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observabil │
+│ ity/agent-core                                                                    │
+╰───────────────────────────────────────────────────────────────────────────────────╯
+
+Response:
+Thanks, Jane. I’ve located **Order ORD-001** for the Wireless Headphones Pro.
+
+**Current status:**
+- **SHIPPED** via UPS
+- **Tracking #:** TRK987654321
+- **Estimated delivery:** October 6, 2026
+- **Order total:** $89.99
+
+Would you like me to help with anything else related to this order?

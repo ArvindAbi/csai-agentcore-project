@@ -1,0 +1,39 @@
+starter % uv run agentcore invoke '{"prompt": "I am a Gold member with 4250 points. Calculate my discount on a $150 standard order.", "customer_id": "CUST-123", "session_id": "t5"}'
+
+⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on
+Amazon Bedrock AgentCore.
+   New Bedrock AgentCore features are only accessible in the AgentCore CLI.
+
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
+   To install the AgentCore CLI: npm install -g @aws/agentcore
+   To import existing agents, run: agentcore import
+   Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
+
+╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
+│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
+│ Request ID: cbe89719-c9fa-4a00-bbde-be52cae8e22a                                       │
+│ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ GenAI Dashboard:                                                                       │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
+│ gent-core                                                                              │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
+Response:
+Based on your Gold membership and 4,250 loyalty points, here's your discount breakdown for
+the $150 standard order:
+
+**Your Discount Summary:**
+- Redeemed 4,000 points ($40.00 value)
+- Gold tier discount: 10% on $110.00 = $11.00
+- **Final total: $99.00**
+- **Total savings: $51.00**
+- Points earned from this order: 99 points
+- Remaining points after purchase: 349 points
+
+The calculation applied your points first, then the Gold tier percentage discount to the
+remaining amount.
