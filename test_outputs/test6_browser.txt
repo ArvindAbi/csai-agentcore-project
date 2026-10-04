@@ -1,7 +1,7 @@
-starter % uv run agentcore invoke '{"prompt": "Go to https://www.udacity.com and tell me the page title.", "customer_id": "CUST-123", "session_id": "t6"}'
+starter % uv run agentcore invoke '{"prompt": "Go to https://www.udacity.com and tell me the page title.", "customer_id": "CUST-123", "session_id": "t6"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:21:51Z --format short --filter-pattern Tool
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
-   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
 Amazon Bedrock AgentCore.
    New Bedrock AgentCore features are only accessible in the AgentCore CLI.
 
@@ -12,7 +12,7 @@ Amazon Bedrock AgentCore.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
 │ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: 692f2745-7a31-4dc7-a39c-08f4f712598f                                       │
+│ Request ID: 11682260-e488-432c-81c6-22b0ab3e075a                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
 │ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
@@ -24,6 +24,9 @@ Amazon Bedrock AgentCore.
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-The page title of https://www.udacity.com is:
-
-**"Learn the Latest Tech Skills; Advance Your Career | Udacity"**
+The page title is: **Learn the Latest Tech Skills; Advance Your Career | Udacity**
+2026-10-04T23:22:04 Tool #1: browser
+2026-10-04T23:22:05 Tool #2: browser
+2026-10-04T23:22:08 Tool #3: browser
+2026-10-04T23:22:46 Tool #4: browser
+2026-10-04T23:23:22 Tool #5: browser

@@ -1,7 +1,7 @@
-starter % uv run agentcore invoke '{"prompt": "I am a Gold member with 4250 points. Calculate my discount on a $150 standard order.", "customer_id": "CUST-123", "session_id": "t5"}'
+starter % uv run agentcore invoke '{"prompt": "I am a Gold member with 4250 points. Calculate my discount on a $150 standard order.", "customer_id": "CUST-123", "session_id": "t5"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:23:46Z --format short --filter-pattern Tool
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
-   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
 Amazon Bedrock AgentCore.
    New Bedrock AgentCore features are only accessible in the AgentCore CLI.
 
@@ -12,7 +12,7 @@ Amazon Bedrock AgentCore.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
 │ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: cbe89719-c9fa-4a00-bbde-be52cae8e22a                                       │
+│ Request ID: 15378ba2-a8fb-4682-b57d-e962b32d5bbe                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
 │ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
@@ -24,16 +24,15 @@ Amazon Bedrock AgentCore.
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-Based on your Gold membership and 4,250 loyalty points, here's your discount breakdown for
-the $150 standard order:
+Here's your discount summary for the $150 standard order:
 
-**Your Discount Summary:**
-- Redeemed 4,000 points ($40.00 value)
+**Gold Member Discount:**
+- Redeemed 4000 points ($40.00)
 - Gold tier discount: 10% on $110.00 = $11.00
 - **Final total: $99.00**
 - **Total savings: $51.00**
-- Points earned from this order: 99 points
-- Remaining points after purchase: 349 points
+- Points earned: 99
+- Remaining points: 349
 
-The calculation applied your points first, then the Gold tier percentage discount to the
-remaining amount.
+Your order discount has been applied successfully.
+2026-10-04T23:26:03 Tool #1: calculate_loyalty_discount

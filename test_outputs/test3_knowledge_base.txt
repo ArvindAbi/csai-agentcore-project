@@ -1,43 +1,35 @@
-starter % uv run agentcore invoke '{"prompt": "What are the benefits of the Platinum loyalty tier?", "customer_id": "CUST-123", "session_id": "t3"}'
+starter % uv run agentcore invoke '{"prompt": "What are the benefits of the Platinum loyalty tier?", "customer_id": "CUST-123", "session_id": "t3"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:14:47Z --format short --filter-pattern Tool
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
-   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy
-agents on Amazon Bedrock AgentCore.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
+Amazon Bedrock AgentCore.
    New Bedrock AgentCore features are only accessible in the AgentCore CLI.
 
-   To uninstall this starter toolkit, run: pip uninstall
-bedrock-agentcore-starter-toolkit
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
    To install the AgentCore CLI: npm install -g @aws/agentcore
    To import existing agents, run: agentcore import
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
-╭─────────────────────────────────── csai_agent ────────────────────────────────────╮
-│ Session: 31a744b5-083f-4ec5-807f-a63ec648587b                                     │
-│ Request ID: ee5a2a06-c07f-410f-9772-eb6d8b419c33                                  │
-│ ARN:                                                                              │
-│ arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
-│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                      │
-│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                    │
-│ GenAI Dashboard:                                                                  │
-│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observabil │
-│ ity/agent-core                                                                    │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
+│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
+│ Request ID: ef004445-8227-4a54-adcc-dca1277f16e4                                       │
+│ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ GenAI Dashboard:                                                                       │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
+│ gent-core                                                                              │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-Based on the information I found, the **Platinum loyalty tier** offers these key
-benefits:
+As a Platinum member, Jane would get these benefits:
 
-- **Free same-day shipping** on eligible orders
-- **15% discount** on purchases
-- **Priority customer support** access
+- **Free same-day shipping**
+- **15% discount** on purchases  
+- **Priority customer support**
 
-These benefits are specifically for Platinum tier members, who have earned 5000 or
-more loyalty points. The Platinum tier also follows the standard point earning rules:
-- Standard items earn 1 point per $1 spent
-- Amazon devices earn 2 points per $1 spent
-- Amazon Fresh earns 5 points per $1 spent
-
-Points can be redeemed at a rate of 100 points = $1 discount, with a minimum
-redemption of 500 points, and points remain valid for 2 years from the date earned.
+(You're currently a Gold member with 4,250 points - just 750 more points to reach 
+Platinum!)
+2026-10-04T23:14:57 Tool #1: search_knowledge_base

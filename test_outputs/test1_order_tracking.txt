@@ -1,41 +1,37 @@
-starter % uv run agentcore invoke '{"prompt": "Can you track order ORD-001?", "customer_id": "CUST-123", "session_id": "t1"}'
+starter % uv run agentcore invoke '{"prompt": "Can you track order ORD-001?", "customer_id": "CUST-123", "session_id": "t1"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:13:43Z --format short --filter-pattern Tool
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
-   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy
-agents on Amazon Bedrock AgentCore.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
+Amazon Bedrock AgentCore.
    New Bedrock AgentCore features are only accessible in the AgentCore CLI.
 
-   To uninstall this starter toolkit, run: pip uninstall
-bedrock-agentcore-starter-toolkit
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
    To install the AgentCore CLI: npm install -g @aws/agentcore
    To import existing agents, run: agentcore import
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
-╭─────────────────────────────────── csai_agent ────────────────────────────────────╮
-│ Session: 31a744b5-083f-4ec5-807f-a63ec648587b                                     │
-│ Request ID: 6a2ba93d-2479-4a4b-825c-72a79b2fdbd9                                  │
-│ ARN:                                                                              │
-│ arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
-│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                      │
-│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                    │
-│ GenAI Dashboard:                                                                  │
-│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observabil │
-│ ity/agent-core                                                                    │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
+│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
+│ Request ID: d055e73d-a422-4648-a849-63ec280147a8                                       │
+│ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ GenAI Dashboard:                                                                       │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
+│ gent-core                                                                              │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-Your order **ORD-001** is currently **SHIPPED** and on its way to you! Here are the
-details:
+Your order **ORD-001** is currently **SHIPPED**.
 
-**Order Summary:**
-- **Product:** Wireless Headphones Pro (1 unit)
+**Details:**
+- **Item:** Wireless Headphones Pro (1 x $89.99)
 - **Total:** $89.99
 - **Carrier:** UPS
 - **Tracking Number:** TRK987654321
-- **Estimated Delivery Date:** October 6, 2026
+- **Estimated Delivery:** October 6, 2026
 
-The order is progressing through the shipping network and should arrive by the
-estimated date. You can track the package using the tracking number with UPS for
-real-time updates.
+You can track the shipment using the tracking number with UPS.
+2026-10-04T23:14:01 Tool #1: order-tracker___get_order

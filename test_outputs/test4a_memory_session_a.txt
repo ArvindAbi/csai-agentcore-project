@@ -1,37 +1,28 @@
-starter % uv run agentcore invoke '{"prompt": "Hi, I am Jane. I prefer concise responses.", "customer_id": "CUST-123", "session_id": "s-A"}'
+starter % uv run agentcore invoke '{"prompt": "Hi, I am Jane. I prefer concise responses.", "customer_id": "CUST-123", "session_id": "s-A"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:18:42Z --format short --filter-pattern Tool
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
-   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy
-agents on Amazon Bedrock AgentCore.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
+Amazon Bedrock AgentCore.
    New Bedrock AgentCore features are only accessible in the AgentCore CLI.
 
-   To uninstall this starter toolkit, run: pip uninstall
-bedrock-agentcore-starter-toolkit
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
    To install the AgentCore CLI: npm install -g @aws/agentcore
    To import existing agents, run: agentcore import
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
-╭─────────────────────────────────── csai_agent ────────────────────────────────────╮
-│ Session: 399b8d0b-691e-4213-849a-71a6e9da8ed6                                     │
-│ Request ID: d0dd2663-ffed-4487-a113-0057576c229c                                  │
-│ ARN:                                                                              │
-│ arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
-│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                      │
-│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                    │
-│ GenAI Dashboard:                                                                  │
-│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observabil │
-│ ity/agent-core                                                                    │
-╰───────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
+│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
+│ Request ID: af54af64-4712-4c87-b5fc-561112896aaf                                       │
+│ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
+│ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
+│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ GenAI Dashboard:                                                                       │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
+│ gent-core                                                                              │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-Thanks, Jane. I’ve located **Order ORD-001** for the Wireless Headphones Pro.
-
-**Current status:**
-- **SHIPPED** via UPS
-- **Tracking #:** TRK987654321
-- **Estimated delivery:** October 6, 2026
-- **Order total:** $89.99
-
-Would you like me to help with anything else related to this order?
+Hello Jane! I'll keep my responses concise. How can I help you today? Would you like to 
+check an order status, process a refund, or need information about products or policies?
