@@ -39,6 +39,7 @@ from strands_tools.browser import AgentCoreBrowser
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("CSAI_Agent")
+logger.setLevel(logging.INFO)
 
 # ── TODO 1 — App Initialisation ───────────────────────────────────────────────
 # Create a BedrockAgentCoreApp instance.
@@ -459,15 +460,46 @@ Keep replies clear and to the point."""
         agent_core_browser = AgentCoreBrowser(region=REGION)
         tools = [search_knowledge_base, calculate_loyalty_discount, agent_core_browser.browser]
 
+        # A Gateway problem should not take the whole agent down. The connection is
+        # opened inside the try because an unreachable URL fails right there,
+        # before any tool is listed.
         gateway_client = MCPClient(lambda: streamable_http_client(GATEWAY_URL))
-        with gateway_client:
+        gateway_tools = []
+        gateway_started = False
+        try:
+            gateway_client.start()
+            gateway_started = True
             page = gateway_client.list_tools_sync()
             gateway_tools = list(page)
             while page.pagination_token:
                 page = gateway_client.list_tools_sync(pagination_token=page.pagination_token)
                 gateway_tools.extend(page)
             tools.extend(gateway_tools)
+            logger.info("Gateway connected successfully. Loaded %d tools.", len(gateway_tools))
+        except TimeoutError:
+            logger.exception("Gateway tool loading timed out")
+        except ConnectionError:
+            logger.exception("Gateway connection failed")
+        except Exception as exc:
+            # The MCP client wraps the real error (DNS, refused connection, 403 ...)
+            # a few levels deep, so dig it out for a useful log line.
+            cause = exc
+            while True:
+                if isinstance(cause, BaseExceptionGroup) and cause.exceptions:
+                    cause = cause.exceptions[0]
+                elif cause.__cause__ is not None:
+                    cause = cause.__cause__
+                else:
+                    break
+            logger.exception("Gateway tool loading failed: %s: %s", type(cause).__name__, cause)
 
+        if not gateway_tools:
+            system_prompt += (
+                "\n\nThe order and refund systems cannot be reached right now. If the customer asks "
+                "about orders, refunds or returns, tell them this and ask them to try again in a few minutes."
+            )
+
+        try:
             agent = Agent(
                 model=model,
                 tools=tools,
@@ -475,6 +507,9 @@ Keep replies clear and to the point."""
                 system_prompt=system_prompt,
             )
             response = await agent.invoke_async(user_input)
+        finally:
+            if gateway_started:
+                gateway_client.stop(None, None, None)
 
         return response.message["content"][0]["text"]
 

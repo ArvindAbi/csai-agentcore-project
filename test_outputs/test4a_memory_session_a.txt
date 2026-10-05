@@ -1,4 +1,4 @@
-starter % uv run agentcore invoke '{"prompt": "Hi, I am Jane. I prefer concise responses.", "customer_id": "CUST-123", "session_id": "s-A"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:18:42Z --format short --filter-pattern Tool
+starter % uv run agentcore invoke '{"prompt": "Hi, I am Jane. I prefer concise responses.", "customer_id": "CUST-123", "session_id": "s-A"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-05T05:08:38Z --format short --filter-pattern '?Tool ?Gateway'
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
    Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
@@ -11,18 +11,18 @@ Amazon Bedrock AgentCore.
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
-│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: af54af64-4712-4c87-b5fc-561112896aaf                                       │
+│ Session: c1d8368f-2340-476a-93ea-0047e2688d20                                          │
+│ Request ID: a3e8991a-56bc-40b2-8bd0-8680719be792                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --follow                           │
 │       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --since 1h                         │
 │ GenAI Dashboard:                                                                       │
 │ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
 │ gent-core                                                                              │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-Hello Jane! I'll keep my responses concise. How can I help you today? Would you like to 
-check an order status, process a refund, or need information about products or policies?
+Hello Jane! I'll keep my responses concise. How can I help you today?
+2026-10-05T05:08:51 INFO:CSAI_Agent:Gateway connected successfully. Loaded 6 tools.

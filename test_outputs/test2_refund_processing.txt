@@ -1,4 +1,4 @@
-starter % uv run agentcore invoke '{"prompt": "I want to return my Kindle Paperwhite (ORD-002). Please initiate a refund.", "customer_id": "CUST-123", "session_id": "t2"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:14:18Z --format short --filter-pattern Tool
+starter % uv run agentcore invoke '{"prompt": "I want to return my Kindle Paperwhite (ORD-002). Please initiate a refund.", "customer_id": "CUST-123", "session_id": "t2"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-05T05:05:32Z --format short --filter-pattern '?Tool ?Gateway'
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
    Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
@@ -11,13 +11,13 @@ Amazon Bedrock AgentCore.
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
-│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: 690181a8-4035-461a-9b6a-9f1ae003f52c                                       │
+│ Session: c1d8368f-2340-476a-93ea-0047e2688d20                                          │
+│ Request ID: 4919d4e5-fc7b-465b-9230-cb245e123b03                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --follow                           │
 │       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --since 1h                         │
 │ GenAI Dashboard:                                                                       │
 │ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
 │ gent-core                                                                              │
@@ -25,6 +25,7 @@ Amazon Bedrock AgentCore.
 
 Response:
 Your refund for the Kindle Paperwhite (ORD-002) has been approved. A credit of $139.99 
-will appear on your account in 3-5 business days. The refund ID is **REF-537U453R**.
-2026-10-04T23:14:29 Tool #1: order-tracker___get_order
-2026-10-04T23:14:29 Tool #2: refund-processor___initiate_refund
+will appear on your account in 3-5 business days. Your refund ID is REF-8ZNB2LLJ.
+2026-10-05T05:05:42 INFO:CSAI_Agent:Gateway connected successfully. Loaded 6 tools.
+2026-10-05T05:05:43 Tool #1: order-tracker___get_order
+2026-10-05T05:05:44 Tool #2: refund-processor___initiate_refund

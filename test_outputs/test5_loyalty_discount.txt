@@ -1,4 +1,4 @@
-starter % uv run agentcore invoke '{"prompt": "I am a Gold member with 4250 points. Calculate my discount on a $150 standard order.", "customer_id": "CUST-123", "session_id": "t5"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:23:46Z --format short --filter-pattern Tool
+starter % uv run agentcore invoke '{"prompt": "I am a Gold member with 4250 points. Calculate my discount on a $150 standard order.", "customer_id": "CUST-123", "session_id": "t5"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-05T05:14:41Z --format short --filter-pattern '?Tool ?Gateway'
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
    Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
@@ -11,13 +11,13 @@ Amazon Bedrock AgentCore.
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
-│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: 15378ba2-a8fb-4682-b57d-e962b32d5bbe                                       │
+│ Session: c1d8368f-2340-476a-93ea-0047e2688d20                                          │
+│ Request ID: 29c16fc8-d898-4ddc-a5e3-4e82d8ef1924                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --follow                           │
 │       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --since 1h                         │
 │ GenAI Dashboard:                                                                       │
 │ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
 │ gent-core                                                                              │
@@ -34,5 +34,6 @@ Here's your discount summary for the $150 standard order:
 - Points earned: 99
 - Remaining points: 349
 
-Your order discount has been applied successfully.
-2026-10-04T23:26:03 Tool #1: calculate_loyalty_discount
+Your order is now $99.00 after applying your Gold member benefits.
+2026-10-05T05:15:38 INFO:CSAI_Agent:Gateway connected successfully. Loaded 6 tools.
+2026-10-05T05:15:39 Tool #1: calculate_loyalty_discount

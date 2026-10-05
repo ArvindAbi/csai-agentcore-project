@@ -1,4 +1,4 @@
-starter % uv run agentcore invoke '{"prompt": "What are the benefits of the Platinum loyalty tier?", "customer_id": "CUST-123", "session_id": "t3"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:14:47Z --format short --filter-pattern Tool
+starter % uv run agentcore invoke '{"prompt": "What are the benefits of the Platinum loyalty tier?", "customer_id": "CUST-123", "session_id": "t3"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-05T05:06:04Z --format short --filter-pattern '?Tool ?Gateway'
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
    Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
@@ -11,25 +11,25 @@ Amazon Bedrock AgentCore.
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
-│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: ef004445-8227-4a54-adcc-dca1277f16e4                                       │
+│ Session: c1d8368f-2340-476a-93ea-0047e2688d20                                          │
+│ Request ID: 72ed42d2-fe8e-4b0a-bf94-b3fe28fae032                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --follow                           │
 │       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --since 1h                         │
 │ GenAI Dashboard:                                                                       │
 │ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
 │ gent-core                                                                              │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-As a Platinum member, Jane would get these benefits:
+As a Platinum member, Jane, you get:
 
 - **Free same-day shipping**
 - **15% discount** on purchases  
 - **Priority customer support**
 
-(You're currently a Gold member with 4,250 points - just 750 more points to reach 
-Platinum!)
-2026-10-04T23:14:57 Tool #1: search_knowledge_base
+These benefits apply once you reach 5000 or more loyalty points.
+2026-10-05T05:06:14 INFO:CSAI_Agent:Gateway connected successfully. Loaded 6 tools.
+2026-10-05T05:06:15 Tool #1: search_knowledge_base

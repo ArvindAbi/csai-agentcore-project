@@ -1,4 +1,4 @@
-starter % uv run agentcore invoke '{"prompt": "Go to https://www.udacity.com and tell me the page title.", "customer_id": "CUST-123", "session_id": "t6"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:21:51Z --format short --filter-pattern Tool
+starter % uv run agentcore invoke '{"prompt": "Go to https://www.udacity.com and tell me the page title.", "customer_id": "CUST-123", "session_id": "t6"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-05T05:12:43Z --format short --filter-pattern '?Tool ?Gateway'
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
    Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
@@ -11,13 +11,13 @@ Amazon Bedrock AgentCore.
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
-│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: 11682260-e488-432c-81c6-22b0ab3e075a                                       │
+│ Session: c1d8368f-2340-476a-93ea-0047e2688d20                                          │
+│ Request ID: 9de0fbfc-8670-4755-bef9-05cead263428                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --follow                           │
 │       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --since 1h                         │
 │ GenAI Dashboard:                                                                       │
 │ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
 │ gent-core                                                                              │
@@ -25,8 +25,9 @@ Amazon Bedrock AgentCore.
 
 Response:
 The page title is: **Learn the Latest Tech Skills; Advance Your Career | Udacity**
-2026-10-04T23:22:04 Tool #1: browser
-2026-10-04T23:22:05 Tool #2: browser
-2026-10-04T23:22:08 Tool #3: browser
-2026-10-04T23:22:46 Tool #4: browser
-2026-10-04T23:23:22 Tool #5: browser
+2026-10-05T05:12:55 INFO:CSAI_Agent:Gateway connected successfully. Loaded 6 tools.
+2026-10-05T05:12:57 Tool #1: browser
+2026-10-05T05:12:58 Tool #2: browser
+2026-10-05T05:13:02 Tool #3: browser
+2026-10-05T05:13:42 Tool #4: browser
+2026-10-05T05:13:49 Tool #5: browser

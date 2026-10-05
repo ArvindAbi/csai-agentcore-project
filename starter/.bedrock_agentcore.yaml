@@ -32,7 +32,7 @@ agents:
     bedrock_agentcore:
       agent_id: csai_agent-goPC05Ebbo
       agent_arn: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo
-      agent_session_id: 799bf7c3-b14f-4506-8d74-c505476f9b59
+      agent_session_id: c1d8368f-2340-476a-93ea-0047e2688d20
     codebuild:
       project_name: null
       execution_role: null

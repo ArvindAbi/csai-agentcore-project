@@ -1,4 +1,4 @@
-starter % uv run agentcore invoke '{"prompt": "Can you track order ORD-001?", "customer_id": "CUST-123", "session_id": "t1"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-04T23:13:43Z --format short --filter-pattern Tool
+starter % uv run agentcore invoke '{"prompt": "Can you track order ORD-001?", "customer_id": "CUST-123", "session_id": "t1"}'; sleep 10; aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT --since 2026-10-05T05:04:49Z --format short --filter-pattern '?Tool ?Gateway'
 
 ⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
    Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on 
@@ -11,27 +11,20 @@ Amazon Bedrock AgentCore.
    Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
 
 ╭────────────────────────────────────── csai_agent ──────────────────────────────────────╮
-│ Session: 799bf7c3-b14f-4506-8d74-c505476f9b59                                          │
-│ Request ID: d055e73d-a422-4648-a849-63ec280147a8                                       │
+│ Session: c1d8368f-2340-476a-93ea-0047e2688d20                                          │
+│ Request ID: 93300ef6-e5aa-4026-9b00-b3ebee1731ea                                       │
 │ ARN: arn:aws:bedrock-agentcore:us-east-1:023479330952:runtime/csai_agent-goPC05Ebbo    │
 │ Logs: aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --follow                           │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --follow                           │
 │       aws logs tail /aws/bedrock-agentcore/runtimes/csai_agent-goPC05Ebbo-DEFAULT      │
-│ --log-stream-name-prefix "2026/10/04/[runtime-logs" --since 1h                         │
+│ --log-stream-name-prefix "2026/10/05/[runtime-logs" --since 1h                         │
 │ GenAI Dashboard:                                                                       │
 │ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/a │
 │ gent-core                                                                              │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 Response:
-Your order **ORD-001** is currently **SHIPPED**.
-
-**Details:**
-- **Item:** Wireless Headphones Pro (1 x $89.99)
-- **Total:** $89.99
-- **Carrier:** UPS
-- **Tracking Number:** TRK987654321
-- **Estimated Delivery:** October 6, 2026
-
-You can track the shipment using the tracking number with UPS.
-2026-10-04T23:14:01 Tool #1: order-tracker___get_order
+Your order ORD-001 has shipped via UPS and is on its way. The tracking number is 
+TRK987654321, and it's expected to be delivered by October 7, 2026.
+2026-10-05T05:05:08 INFO:CSAI_Agent:Gateway connected successfully. Loaded 6 tools.
+2026-10-05T05:05:09 Tool #1: order-tracker___get_order

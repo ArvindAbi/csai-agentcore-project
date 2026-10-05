@@ -1,0 +1,256 @@
+Negative test: Gateway unreachable (dummy GATEWAY_URL), run locally against main.py
+
+starter % uv run python -c "import asyncio, main; main.GATEWAY_URL = 'https://dummy-gateway.invalid/mcp'; asyncio.run(main.invoke({'prompt': 'Can you track order ORD-001?', 'customer_id': 'CUST-456', 'session_id': 'gw-fail-test'}))" 2>&1 | tee ../test_outputs/gateway_failure_test.txt
+
+ERROR:strands.tools.mcp.mcp_client:client failed to initialize
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/strands/tools/mcp/mcp_client.py", line 462, in start
+  |     self._init_future.result(timeout=self._startup_timeout)
+  |     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/opt/anaconda3/lib/python3.13/concurrent/futures/_base.py", line 456, in result
+  |     return self.__get_result()
+  |            ~~~~~~~~~~~~~~~~~^^
+  |   File "/opt/anaconda3/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+  |     raise self._exception
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/strands/tools/mcp/mcp_client.py", line 1471, in _async_background_thread
+  |     async with self._transport_callable() as (read_stream, write_stream, *_):
+  |                ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 688, in streamable_http_client
+  |     anyio.create_task_group() as tg,
+  |     ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 98, in map_httpcore_exceptions
+    |     yield
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 388, in handle_async_request
+    |     resp = await self._pool.handle_async_request(req)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection_pool.py", line 242, in handle_async_request
+    |     raise exc from None
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection_pool.py", line 224, in handle_async_request
+    |     response = await connection.handle_async_request(pool_request.request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection.py", line 94, in handle_async_request
+    |     raise exc
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection.py", line 74, in handle_async_request
+    |     stream = await self._connect(request)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection.py", line 117, in _connect
+    |     stream = await self._network_backend.connect_tcp(**kwargs)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_backends/auto.py", line 31, in connect_tcp
+    |     return await self._backend.connect_tcp(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<5 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_backends/anyio.py", line 115, in connect_tcp
+    |     with map_exceptions(exc_map):
+    |          ~~~~~~~~~~~~~~^^^^^^^^^
+    |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_exceptions.py", line 17, in map_exceptions
+    |     raise to_exc(exc) from exc
+    | httpcore2.ConnectError: [Errno 8] nodename nor servname provided, or not known
+    | 
+    | The above exception was the direct cause of the following exception:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/anyio/_core/_tasks.py", line 327, in _run_coro
+    |     retval = await self._coro
+    |              ^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 308, in _run_request_post
+    |     await post_fn()
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 589, in handle_request_async
+    |     await self._handle_post_request(ctx)
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 323, in _handle_post_request
+    |     async with ctx.client.stream(
+    |                ~~~~~~~~~~~~~~~~~^
+    |         "POST",
+    |         ^^^^^^^
+    |     ...<2 lines>...
+    |         headers=headers,
+    |         ^^^^^^^^^^^^^^^^
+    |     ) as response:
+    |     ^
+    |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+    |     return await anext(self.gen)
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1678, in stream
+    |     response = await self.send(
+    |                ^^^^^^^^^^^^^^^^
+    |     ...<4 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1818, in send
+    |     response = await self._send_handling_auth(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<4 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1846, in _send_handling_auth
+    |     response = await self._send_handling_redirects(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1881, in _send_handling_redirects
+    |     response = await self._send_single_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1915, in _send_single_request
+    |     response = await transport.handle_async_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 387, in handle_async_request
+    |     with map_httpcore_exceptions():
+    |          ~~~~~~~~~~~~~~~~~~~~~~~^^
+    |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 115, in map_httpcore_exceptions
+    |     raise mapped_exc(message) from exc
+    | httpx2.ConnectError: [Errno 8] nodename nor servname provided, or not known
+    +------------------------------------
+/opt/anaconda3/lib/python3.13/asyncio/base_events.py:750: RuntimeWarning: coroutine 'MCPClient.stop.<locals>._set_close_event' was never awaited
+  self._ready.clear()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ERROR:CSAI_Agent:Gateway tool loading failed: ConnectError: [Errno 8] nodename nor servname provided, or not known
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/strands/tools/mcp/mcp_client.py", line 462, in start
+  |     self._init_future.result(timeout=self._startup_timeout)
+  |     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/opt/anaconda3/lib/python3.13/concurrent/futures/_base.py", line 456, in result
+  |     return self.__get_result()
+  |            ~~~~~~~~~~~~~~~~~^^
+  |   File "/opt/anaconda3/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+  |     raise self._exception
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/strands/tools/mcp/mcp_client.py", line 1471, in _async_background_thread
+  |     async with self._transport_callable() as (read_stream, write_stream, *_):
+  |                ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 235, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 688, in streamable_http_client
+  |     anyio.create_task_group() as tg,
+  |     ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 98, in map_httpcore_exceptions
+    |     yield
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 388, in handle_async_request
+    |     resp = await self._pool.handle_async_request(req)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection_pool.py", line 242, in handle_async_request
+    |     raise exc from None
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection_pool.py", line 224, in handle_async_request
+    |     response = await connection.handle_async_request(pool_request.request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection.py", line 94, in handle_async_request
+    |     raise exc
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection.py", line 74, in handle_async_request
+    |     stream = await self._connect(request)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_async/connection.py", line 117, in _connect
+    |     stream = await self._network_backend.connect_tcp(**kwargs)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_backends/auto.py", line 31, in connect_tcp
+    |     return await self._backend.connect_tcp(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<5 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_backends/anyio.py", line 115, in connect_tcp
+    |     with map_exceptions(exc_map):
+    |          ~~~~~~~~~~~~~~^^^^^^^^^
+    |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpcore2/_exceptions.py", line 17, in map_exceptions
+    |     raise to_exc(exc) from exc
+    | httpcore2.ConnectError: [Errno 8] nodename nor servname provided, or not known
+    | 
+    | The above exception was the direct cause of the following exception:
+    | 
+    | Traceback (most recent call last):
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/anyio/_core/_tasks.py", line 327, in _run_coro
+    |     retval = await self._coro
+    |              ^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 308, in _run_request_post
+    |     await post_fn()
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 589, in handle_request_async
+    |     await self._handle_post_request(ctx)
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/mcp/client/streamable_http.py", line 323, in _handle_post_request
+    |     async with ctx.client.stream(
+    |                ~~~~~~~~~~~~~~~~~^
+    |         "POST",
+    |         ^^^^^^^
+    |     ...<2 lines>...
+    |         headers=headers,
+    |         ^^^^^^^^^^^^^^^^
+    |     ) as response:
+    |     ^
+    |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+    |     return await anext(self.gen)
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1678, in stream
+    |     response = await self.send(
+    |                ^^^^^^^^^^^^^^^^
+    |     ...<4 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1818, in send
+    |     response = await self._send_handling_auth(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<4 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1846, in _send_handling_auth
+    |     response = await self._send_handling_redirects(
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1881, in _send_handling_redirects
+    |     response = await self._send_single_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_client.py", line 1915, in _send_single_request
+    |     response = await transport.handle_async_request(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 387, in handle_async_request
+    |     with map_httpcore_exceptions():
+    |          ~~~~~~~~~~~~~~~~~~~~~~~^^
+    |   File "/opt/anaconda3/lib/python3.13/contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/httpx2/_transports/default.py", line 115, in map_httpcore_exceptions
+    |     raise mapped_exc(message) from exc
+    | httpx2.ConnectError: [Errno 8] nodename nor servname provided, or not known
+    +------------------------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/main.py", line 470, in invoke
+    gateway_client.start()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/arvind/Projects/Project 1/cd14763-project-starter/starter/.venv/lib/python3.13/site-packages/strands/tools/mcp/mcp_client.py", line 475, in start
+    raise MCPClientInitializationError(f"the client initialization failed: {e}") from e
+strands.types.exceptions.MCPClientInitializationError: the client initialization failed: unhandled errors in a TaskGroup (1 sub-exception)
+I understand you'd like me to track order ORD-001, but I'm currently unable to access order and refund systems due to temporary issues. 
+
+The order and refund systems are currently unreachable, which means I can't retrieve order status, tracking information, or any other order details for you at this moment.
+
+I recommend trying again in a few minutes when the systems might be back online. Alternatively, you could check your order status directly on our website by logging into your account and visiting the "Order History" section, or you might find tracking information in the confirmation email you received after placing your order.
+
+Would you like me to help you with anything else in the meantime, such as information about our return policy, warranty details, or other general questions?
