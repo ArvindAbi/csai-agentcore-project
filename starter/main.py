@@ -29,6 +29,7 @@ import argparse, json
 import os, asyncio, boto3
 from strands.hooks import (
     HookProvider, AfterInvocationEvent, HookRegistry, MessageAddedEvent,
+    AfterToolCallEvent,
 )
 import logging
 import uuid
@@ -411,6 +412,21 @@ print(json.dumps({{
         })
 
 
+class ToolErrorLogger(HookProvider):
+    """Logs tool calls that fail, so a Gateway or Lambda problem shows up in the runtime logs."""
+
+    def log_failed_tool(self, event: AfterToolCallEvent):
+        name = event.tool_use.get("name", "unknown")
+        if event.exception is not None:
+            logger.error("Tool %s raised %s: %s", name, type(event.exception).__name__, event.exception)
+        elif event.result and event.result.get("status") == "error":
+            detail = " ".join(c["text"] for c in event.result.get("content", []) if "text" in c)
+            logger.warning("Tool %s returned an error: %s", name, detail[:300])
+
+    def register_hooks(self, registry: HookRegistry) -> None:  # type: ignore
+        registry.add_callback(AfterToolCallEvent, self.log_failed_tool)
+
+
 # ── TODO 8 — Agent Entrypoint ─────────────────────────────────────────────────
 # Implement the invoke() function decorated with @app.entrypoint.
 #
@@ -503,7 +519,7 @@ Keep replies clear and to the point."""
             agent = Agent(
                 model=model,
                 tools=tools,
-                hooks=[memory_hook],
+                hooks=[memory_hook, ToolErrorLogger()],
                 system_prompt=system_prompt,
             )
             response = await agent.invoke_async(user_input)
@@ -513,9 +529,10 @@ Keep replies clear and to the point."""
 
         return response.message["content"][0]["text"]
 
-    except Exception as e:
+    except Exception:
+        # Full details go to the logs only; the customer never sees raw AWS errors.
         logger.exception("Agent invocation failed")
-        return f"Sorry, something went wrong while handling your request: {e}"
+        return "Sorry, something went wrong while handling your request. Please try again in a moment."
 
 
 # ── CLI entry point (do not modify) ──────────────────────────────────────────
